@@ -1,0 +1,200 @@
+@font-face {
+    font-family: 'Gilroy';
+    src: url('./../../../asets/fonts/Gilroy/Gilroy-Light.otf');
+}
+
+@keyframes tracking-in-expand {
+    0% {
+        letter-spacing: -.5em;
+        opacity: 0
+    }
+
+    40% {
+        opacity: .6
+    }
+
+    100% {
+        opacity: 1
+    }
+}
+
+@keyframes heartbeat {
+    from {
+        transform: scale(1);
+        transform-origin: center center;
+        animation-timing-function: ease-out
+    }
+
+    10% {
+        transform: scale(.91);
+        animation-timing-function: ease-in
+    }
+
+    17% {
+        transform: scale(.98);
+        animation-timing-function: ease-out
+    }
+
+    33% {
+        transform: scale(.87);
+        animation-timing-function: ease-in
+    }
+
+    45% {
+        transform: scale(1);
+        animation-timing-function: ease-out
+    }
+}
+
+@keyframes puff-out-center {
+    0% {
+        transform: scale(1);
+        filter: blur(0);
+        opacity: 1
+    }
+
+    100% {
+        transform: scale(2);
+        filter: blur(4px);
+        opacity: 0
+    }
+}
+
+@keyframes wobble-hor-bottom {
+
+    0%,
+    100% {
+        transform: translateX(0);
+        transform-origin: 50% 50%
+    }
+
+    15% {
+        transform: translateX(-1px) rotate(-6deg)
+    }
+
+    30% {
+        transform: translateX(1px) rotate(6deg)
+    }
+
+    45% {
+        transform: translateX(-1px) rotate(-3.6deg)
+    }
+
+    60% {
+        transform: translateX(1px) rotate(2.4deg)
+    }
+
+    75% {
+        transform: translateX(-1px) rotate(-1.2deg)
+    }
+}
+
+@keyframes shake-horizontal {
+
+    0%,
+    100% {
+        transform: translateX(0)
+    }
+
+    10%,
+    30%,
+    50%,
+    70% {
+        transform: translateX(-1px)
+    }
+
+    20%,
+    40%,
+    60% {
+        transform: translateX(1px)
+    }
+
+    80% {
+        transform: translateX(1px)
+    }
+
+    90% {
+        transform: translateX(-1px)
+    }
+}
+
+.sidebar-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    width: 300px;
+    padding: 1rem;
+    height: 100vh;
+    overflow-y: auto;
+    background-color: rgb(83, 96, 140);
+    color: white;
+    transition: bottom .5s ease-in-out, opacity .3s ease-in-out, visibility .3s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+    left: 4rem;
+    font-family: 'Gilroy', sans-serif !important;
+    text-align: center;
+    cursor: default;
+    z-index: 1003;
+
+    @media screen and (max-width:500px) {
+        width: calc(100vw - 4rem);
+    }
+
+    &.close {
+        bottom: -100rem;
+    }
+
+    &.open {
+        opacity: 1;
+        visibility: visible;
+        bottom: -4rem;
+    }
+
+    &__title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        border-bottom: 1px solid gainsboro;
+        padding-bottom: .5rem;
+        transition: transform .3s ease-in-out, color .2s ease-in-out;
+        margin-top: 5rem;
+
+        &:hover {
+            transform: scale(1.05);
+            color: rgb(155, 216, 75);
+        }
+    }
+
+    &__button {
+        cursor: pointer;
+        padding: .7rem 3rem;
+        border-radius: 33px;
+        font-size: 1.3rem;
+        color: #4c5471;
+        font-weight: bold;
+        background: linear-gradient(90deg, #a7c838, #d8d823, #d8d823, #a7c838);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: heartbeat 1.5s ease-in-out infinite both;
+        transition: all .3s ease-in-out;
+        outline: none;
+        border: none;
+        margin-top: 22rem;
+        margin-bottom: 8rem;
+
+        @media screen and (max-width:500px) {
+            margin-top: 18rem;
+        }
+
+        &:hover {
+            -webkit-box-shadow: 0px 0px 17px 17px rgba(26, 181, 57, 0.77);
+            -moz-box-shadow: 0px 0px 17px 17px rgba(26, 181, 57, 0.77);
+            box-shadow: 0px 0px 17px 17px rgba(26, 181, 57, 0.77);
+            animation: none;
+        }
+    }
+
+
+}

@@ -1,0 +1,13 @@
+{
+  "logoTitleFirstWord": "Private",
+  "logoTitleSecondWord": "cabinet",
+  "hiddenAccHead": "Your data:",
+  "changeAccTitle": "Change account",
+  "close": "Close",
+  "hiddenBalanceHead": "Your balance:",
+  "currencyChangeTitle": "Show in other currency",
+  "currencyChangeTotal": "Value:",
+  "accountChangeQuestion": "Are you sure you want to change your account?",
+  "accountChangeFirstAnswer": "Yes",
+  "accountChangeSecondAnswer": "No"
+}

@@ -1,0 +1,36 @@
+.resource__names {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(100, 110, 115, 0.7);
+    margin-bottom: 1rem;
+
+    @media screen and (max-width:670px) {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
+
+.resource__name {
+    margin-right: 1.3rem;
+    text-align: center;
+    display: inline-block;
+    padding-bottom: .4rem;
+    transition: all 0.2s;
+    cursor: pointer;
+    color: #3e515b;
+    font-weight: bold;
+
+    &.selected {
+        border-bottom: 5px solid #20a8d8;
+    }
+
+    @media screen and (max-width:670px) {
+        margin-right: 0;
+        margin-bottom: 0.6rem;
+        padding-bottom: 0.2rem;
+        align-items: center;
+    }
+}

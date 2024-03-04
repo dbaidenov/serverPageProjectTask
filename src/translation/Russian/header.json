@@ -1,0 +1,13 @@
+{
+  "logoTitleFirstWord": "Личный",
+  "logoTitleSecondWord": "кабинет",
+  "hiddenAccHead": "Ваши данные:",
+  "changeAccTitle": "Изменить аккаунт",
+  "close": "Закрыть",
+  "hiddenBalanceHead": "Ваш баланс:",
+  "currencyChangeTitle": "Показать в другой валюте",
+  "currencyChangeTotal": "Значение:",
+  "accountChangeQuestion": "Вы уверены что хотите сменить аккаунт?",
+  "accountChangeFirstAnswer": "Да",
+  "accountChangeSecondAnswer": "Нет"
+}

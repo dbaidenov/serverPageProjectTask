@@ -1,0 +1,86 @@
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  10%,
+  30%,
+  50%,
+  70% {
+    transform: translateX(-1px);
+  }
+
+  20%,
+  40%,
+  60% {
+    transform: translateX(1px);
+  }
+
+  80% {
+    transform: translateX(1px);
+  }
+
+  90% {
+    transform: translateX(-1px);
+  }
+}
+
+@mixin resourceBlock($bgColor) {
+  padding-block: 1.5rem;
+  text-align: center;
+  border-radius: 7px;
+  background-color: $bgColor;
+}
+
+.resource-container {
+  display: grid;
+  width: 100%;
+  //было задано чтобы минимальная ширина блока ресурса была 360px
+  grid-template-columns: repeat(3, minmax(360px, auto));
+  grid-auto-rows: auto;
+  gap: 1rem;
+  cursor: pointer;
+
+  @media screen and (max-width: 1330px) {
+    grid-template-columns: repeat(2, minmax(360px, 100%));
+  }
+
+  @media screen and (max-width: 910px) {
+    justify-content: center;
+    grid-template-columns: minmax(360px, 100%);
+  }
+
+  @media screen and (max-width: 440px) {
+    grid-template-columns: 100%;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+
+  &-notavailable {
+    display: flex;
+    width: 100%;
+  }
+}
+
+.resource {
+  @include resourceBlock(white);
+  transition: background-color 0.2s;
+
+  &__count {
+    font-weight: bold;
+  }
+
+  &:hover {
+    background-color: rgb(155, 167, 183);
+  }
+
+  &-notavailable {
+    @include resourceBlock(rgb(190, 163, 163));
+    width: 100%;
+    animation: shake 0.7s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  }
+}

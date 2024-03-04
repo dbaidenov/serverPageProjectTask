@@ -1,0 +1,80 @@
+$focusedInputColor: rgb(26, 115, 232);
+$desciptionColor: rgba(100, 110, 115, 0.7);
+
+.input-container {
+    width: 100%;
+    background-color: white;
+    padding: 3.5rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media screen and (max-width:768px) {
+        flex-direction: column;
+    }
+
+    @media screen and (max-width:768px) {
+        padding: 1.5rem 1.7rem;
+    }
+
+    &-main {
+        width: 48%;
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        @media screen and (max-width:768px) {
+            width: 100%;
+            margin-bottom: 1rem;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        &__input {
+            border: 2px solid rgb(218, 220, 224);
+            border-radius: .3rem;
+            width: 100%;
+            padding: .9rem .8rem;
+            outline: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: border .1s;
+
+            @media screen and (max-width:500px) {}
+        }
+
+        .clickedInput {
+            border: 2px solid $focusedInputColor;
+        }
+
+
+        &__label {
+            color: $desciptionColor;
+            z-index: 2;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            position: absolute;
+            font-size: 1rem;
+            transition: top 0.1s;
+            background-color: white;
+            padding-inline: .2rem;
+            cursor: text;
+            border: none;
+
+            @media screen and (max-width:425px) {
+                font-size: .8rem;
+                left: .5rem;
+            }
+
+            &.clickedLabel {
+                font-size: 0.8rem;
+                top: 0;
+                color: $focusedInputColor;
+            }
+        }
+
+    }
+}

@@ -1,0 +1,176 @@
+$titleColor: #000;
+$desciptionColor: rgba(100, 110, 115, 0.7);
+
+
+@mixin navs {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color .3s, border-radius .3s, border .3s, padding .3s;
+
+    &.clickedNav {
+        border: 1px solid transparent;
+        border-radius: 0.8rem;
+        padding: 0.3rem 0.6rem;
+        background-color: rgb(153, 212, 156);
+        -webkit-box-shadow: inset 0px 0px 5px 0px rgb(208, 202, 175);
+        -moz-box-shadow: inset 0px 0px 5px 0px rgb(208, 202, 175);
+        box-shadow: inset 0px 0px 5px 0px rgb(208, 202, 175);
+    }
+
+    &__img {
+        width: 2.6rem;
+        height: 2.6rem;
+        border: 1px solid transparent;
+        border-radius: 100%;
+        overflow: hidden;
+        margin-right: .6rem;
+
+        &>img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+        @media screen and (max-width:670px) {
+            margin-right: 0;
+        }
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        font-family: 'Poppins', sans-serif;
+        font-size: 14px;
+
+        &.hidden {
+            display: none;
+        }
+    }
+
+    &__title {
+        font-weight: 700;
+
+
+        @media screen and (max-width:670px) {
+            display: none;
+        }
+    }
+
+    &__description {
+
+        color: $desciptionColor;
+
+        @media screen and (max-width:670px) {
+            display: none;
+        }
+    }
+
+}
+
+@mixin hiddenNavContent {
+    display: flex;
+    width: 425px;
+    flex-direction: column;
+    align-items: flex-start;
+    position: fixed;
+    top: 4rem;
+    height: calc(100vh - 4rem);
+    overflow-y: auto;
+    padding: 1.5rem 2rem;
+    z-index: 2;
+    font-family: 'Poppins', sans-serif;
+    background-color: aliceblue;
+    transition: right .3s ease-in-out, opacity .3s ease-in-out, visibility .3s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+
+    @media screen and (max-width:500px) {
+        width: 100%;
+    }
+
+    &.close {
+        right: -1000px;
+    }
+
+    &.open {
+        opacity: 1;
+        visibility: visible;
+        right: 0;
+    }
+
+    &__head {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-bottom: 1rem;
+        width: 100%;
+        border-bottom: 2px solid rgb(92, 88, 88);
+    }
+
+    &__title {
+        color: $titleColor;
+        font-size: 1.4rem;
+        margin-top: 7px;
+    }
+
+    &__email {
+        color: $desciptionColor;
+
+        &::before {
+            content: '✉ ';
+        }
+    }
+
+    &__close {
+        margin-top: auto;
+        cursor: pointer;
+        height: 40px;
+        width: 100%;
+        position: sticky;
+        bottom: 0;
+        width: 100%;
+        right: 0;
+
+
+        &__button {
+            width: 100%;
+            transition: none;
+            background-color: rgb(134, 199, 194);
+            border-radius: 1rem;
+            padding: .5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &>img {
+                width: 1rem;
+                height: 1rem;
+                object-fit: cover;
+            }
+        }
+
+
+    }
+}
+
+@mixin hiddenNavItem {
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 0;
+    border-color: transparent;
+    transition: all .2s ease-in-out;
+    margin-top: 1rem;
+    width: 100%;
+
+    &:hover {
+        padding-left: 1rem;
+        font-size: 1.2rem;
+        color: rgb(199, 180, 54);
+    }
+
+    &::before {
+        content: '➤';
+        margin-right: .3rem;
+    }
+}

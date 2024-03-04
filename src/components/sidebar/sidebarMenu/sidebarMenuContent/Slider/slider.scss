@@ -1,0 +1,285 @@
+@mixin slider-title {
+    width: 2rem;
+    height: 2rem;
+
+    &__item {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+    }
+}
+
+@mixin slider-buttons {
+    position: absolute;
+    bottom: 50%;
+    transform: translateY(100%);
+
+    @media screen and (max-width:1270px) {
+        bottom: 15%;
+    }
+
+    @media screen and (max-width:768px) {
+        bottom: 50%;
+    }
+
+    @media screen and (max-width:625px) {
+        bottom: 15%;
+    }
+
+    @media screen and (max-width:450px) {
+        bottom: 10%;
+    }
+}
+
+@keyframes slide-in-elliptic-bottom-fwd {
+    0% {
+        transform: translateY(600px) rotateX(30deg) scale(0);
+        transform-origin: 50% 100%;
+        opacity: 0
+    }
+
+    100% {
+        transform: translateY(0) rotateX(0) scale(1);
+        transform-origin: 50% -1400px;
+        opacity: 1
+    }
+}
+
+
+@keyframes slit-in-vertical {
+    0% {
+        transform: translateZ(-800px) rotateY(90deg);
+        opacity: 0
+    }
+
+    54% {
+        transform: translateZ(-160px) rotateY(87deg);
+        opacity: 1
+    }
+
+    100% {
+        transform: translateZ(0) rotateY(0)
+    }
+}
+
+.sidebar-menu-content__slider {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    overflow-x: hidden;
+    row-gap: 1rem;
+    position: relative;
+    overflow-y: hidden;
+
+    @media screen and (max-width:990px) {
+        grid-row: 1/2;
+        margin-block: 13rem;
+    }
+
+    &__title {
+        font-size: 2rem;
+        display: flex;
+        align-items: center;
+
+        .slider-counter {
+            @include slider-title();
+            overflow: hidden;
+            position: relative;
+
+            &__item {
+                color: green;
+                font-weight: 700;
+                transition: transform .7s;
+                top: 0;
+                position: absolute;
+            }
+        }
+
+        .slider-length {
+            @include slider-title();
+        }
+
+    }
+
+    &__slides {
+        width: 450px;
+        overflow: hidden;
+        height: 450px;
+        position: relative;
+
+        @media screen and (max-width:1115px) {
+            width: 380px;
+            height: 380px;
+        }
+
+        @media screen and (max-width:525px) {
+            width: 310px;
+            height: 310px;
+        }
+    }
+
+
+    &__button {
+        width: 2rem;
+        height: 2rem;
+        cursor: pointer;
+        transition: all .3s ease-in-out;
+
+        &:hover {
+            width: 3rem;
+            height: 3rem;
+
+            @media screen and (max-width:500px) {
+                width: 2.3rem;
+                height: 2.3rem;
+            }
+
+            @media screen and (max-width:430px) {
+                & img {
+                    animation: none !important;
+                }
+
+                width: 2rem;
+                height: 2rem;
+            }
+
+            &.nextContentSlider {
+                &>img {
+                    animation: wobble-ver-right-2 .8s both
+                }
+            }
+
+            &.prevContentSlider {
+                &>img {
+                    animation: wobble-ver-left-2 .8s both
+                }
+            }
+
+            &>img {
+                filter: invert(1);
+            }
+        }
+
+        &>img {
+            width: 100%;
+            height: 100%;
+            transition: filter .3s
+        }
+
+        &.nextContentSlider {
+            @include slider-buttons();
+            right: 3rem;
+
+            @media screen and (max-width:1410px) {
+                right: .2rem;
+            }
+
+            @media screen and (max-width:990px) {
+                right: 7rem;
+            }
+
+            @media screen and (max-width:910px) {
+                right: 2rem;
+            }
+
+            @media screen and (max-width:768px) {
+                right: 1rem;
+            }
+
+            @media screen and (max-width:500px) {
+                right: .1rem;
+            }
+
+        }
+
+        &.prevContentSlider {
+            @include slider-buttons();
+            left: 3rem;
+
+            @media screen and (max-width:1410px) {
+                left: .2rem;
+            }
+
+            @media screen and (max-width:990px) {
+                left: 7rem;
+            }
+
+            @media screen and (max-width:910px) {
+                left: 2rem;
+            }
+
+            @media screen and (max-width:768px) {
+                left: 1rem;
+            }
+
+            @media screen and (max-width:500px) {
+                left: .1rem;
+            }
+        }
+    }
+
+    &__slide {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        padding: 1.5rem;
+        border-radius: 100%;
+        align-items: center;
+        justify-content: center;
+        background-color: whitesmoke;
+        border: 2px solid rgb(13, 168, 83);
+        font-size: 1.3rem;
+        color: black;
+        transition: background-color .8s, color .5s;
+
+        @media screen and (max-width:430px) {
+            border-radius: unset;
+            border: unset;
+        }
+
+        @media screen and (max-width:375px) {
+            font-size: 1rem;
+            padding: 2rem;
+        }
+
+        &:hover {
+            background-color: rgb(97, 179, 102);
+            color: white;
+
+            @media screen and (max-width:430px) {
+                background-color: yellowgreen;
+            }
+        }
+
+        &.active {
+            animation: slide-in-elliptic-bottom-fwd .7s cubic-bezier(.25, .46, .45, .94) both;
+
+            @media screen and (max-width:768px) {
+                animation: slit-in-vertical .45s ease-out both;
+            }
+        }
+
+        &-text {
+            opacity: 0;
+            transform: translateY(6rem);
+            transition: opacity .9s ease-in-out, transform 1s ease-in-out;
+
+            &.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+
+                @media screen and (max-width:430px) {
+                    width: 80%;
+                    text-align: center;
+                }
+            }
+
+        }
+    }
+}

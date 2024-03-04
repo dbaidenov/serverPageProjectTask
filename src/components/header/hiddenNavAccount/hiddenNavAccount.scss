@@ -1,0 +1,138 @@
+@import './../mixins.scss';
+
+@keyframes overlayAnim {
+    0% {
+        opacity: 0;
+        transform: rotateX(100deg);
+        transform-origin: bottom;
+    }
+
+    100% {
+        opacity: 1;
+        transform: rotateX(0);
+        transform-origin: bottom;
+    }
+}
+
+.account-hidden {
+    @include hiddenNavContent();
+
+
+    &__accounts {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: auto;
+        margin-bottom: 2rem;
+
+        &__title {
+            @include hiddenNavItem();
+        }
+
+        &__list {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: height .4s;
+            height: 0rem;
+            margin-top: 0.5rem;
+
+            &>* {
+                cursor: pointer;
+                margin-bottom: .4rem;
+                transition: padding-left .2s, color 0.2s;
+                font-size: 14px;
+            }
+
+            &>span:hover {
+                padding-left: .5rem;
+                color: rgb(129, 104, 104);
+            }
+
+            &>div {
+                width: max-content;
+                text-align: center;
+                background-color: rgb(201, 199, 198);
+                padding-inline: 10px;
+                border-radius: .5rem;
+                margin-top: .3rem;
+            }
+        }
+
+        &>span {
+            @include hiddenNavItem();
+        }
+    }
+
+    .overlay {
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        z-index: 2002;
+        position: fixed;
+        top: 0;
+        left: 0;
+        backdrop-filter: blur(6px);
+        animation: overlayAnim 1.2s ease-in-out 0s 1 normal forwards;
+    }
+
+}
+
+.modal-window {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 99999;
+    background-color: aliceblue;
+    font-family: 'Poppins', sans-serif;
+    width: auto;
+    padding: 1rem;
+    text-align: center;
+
+    &__title {
+        margin-bottom: .5rem;
+        color: $titleColor;
+        font-weight: 700;
+    }
+
+    &__choice {
+        color: $desciptionColor;
+        width: 10rem;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        overflow: hidden;
+
+        &>span {
+            overflow: hidden;
+        }
+
+        &>div {
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: border-color .3s;
+
+            &:hover {
+                font-weight: bold;
+            }
+
+            &:first-child {
+                &:hover {
+                    border-color: greenyellow;
+                }
+            }
+
+            &:last-child {
+                &:hover {
+                    border-color: rgb(217, 94, 94);
+                }
+            }
+        }
+    }
+}

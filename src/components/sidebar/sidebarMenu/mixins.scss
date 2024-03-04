@@ -1,0 +1,51 @@
+@keyframes slit-in-horizontal {
+    0% {
+        transform: translateZ(-800px) rotateX(90deg);
+        opacity: 0
+    }
+
+    54% {
+        transform: translateZ(-160px) rotateX(87deg);
+        opacity: 1
+    }
+
+    100% {
+        transform: translateZ(0) rotateX(0)
+    }
+}
+
+@mixin sidebarMenuItem {
+    position: fixed;
+    right: 0;
+    left: calc(4rem + 200px);
+    // тут не min-height ибо внутри fixed нельзя сделать скролл когда стоит min-height
+    height: 100vh;
+    overflow-y: auto;
+    flex-grow: 1;
+    cursor: default;
+    overflow-x: hidden;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1001;
+
+    &.close {
+        top: -100rem;
+    }
+
+    &.open {
+        opacity: 1;
+        visibility: visible;
+        animation: slit-in-horizontal .6s ease-in-out both;
+        top: 4rem;
+        transition: top .3s ease-in-out;
+
+        @media screen and (max-width:768px) {
+            top: calc(4rem + 135px);
+            left: 4rem;
+
+            &.hided {
+                top: 4rem;
+            }
+        }
+    }
+}
